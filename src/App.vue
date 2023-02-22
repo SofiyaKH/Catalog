@@ -1,11 +1,17 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
-  <router-view/>
+  <h1>Shooop</h1>
+  <vMainWrapper />
 </template>
 
+<script>
+import vMainWrapper from "./components/v-main-wrapper.vue";
+export default {
+  name: "app",
+  components: {
+    vMainWrapper,
+  },
+};
+</script>
 <style lang="scss">
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
