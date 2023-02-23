@@ -1,5 +1,4 @@
 <template>
-  <h1>Shooop</h1>
   <vMainWrapper />
 </template>
 
