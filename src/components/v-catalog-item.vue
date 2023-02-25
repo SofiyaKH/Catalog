@@ -8,7 +8,7 @@
     <p class="v-catalog-item__name">{{ product_data.name }}</p>
     <p class="v-catalog-item__price">{{ product_data.price }}</p>
     <p class="v-catalog-item__about">{{ product_data.about }}</p>
-    <button class="v-catalog-item__add_to_cart_btn" @click="addToCart">
+    <button class="v-catalog-item__add_to_cart_btn btn" @click="addToCart">
       Add to cart
     </button>
   </div>
@@ -43,7 +43,7 @@ export default {
   padding: 20px;
   margin: 20px;
 }
-.v-catalog-item__image{
+.v-catalog-item__image {
   width: 150px;
   display: block;
   margin: 0 auto;
