@@ -10,7 +10,6 @@ import { mapGetters } from "vuex";
 export default {
   name: "v-main-wrapper",
 
-  props: {},
   data() {
     return {
       title: "Our Shop",
@@ -19,8 +18,7 @@ export default {
   computed: {
     ...mapGetters(["CART"]),
   },
-  methods: {},
-  watch: {},
+
 };
 </script>
   

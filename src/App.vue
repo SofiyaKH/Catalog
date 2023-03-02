@@ -4,6 +4,7 @@
 
 <script>
 import vMainWrapper from "./components/v-main-wrapper.vue";
+
 export default {
   name: "app",
   components: {
