@@ -13,6 +13,12 @@ export default createStore({
     },
     CART(state) {
       return state.cart
+    },
+    CART_QUANTITY(state) {
+      return state.cart.reduce((acc, val) => {
+        acc += val.quantity;
+        return acc
+      }, 0);
     }
   },
 
@@ -21,7 +27,15 @@ export default createStore({
       state.products = products;
     },
     SET_CART: (state, products) => {
-      state.cart.push(products)
+
+      if (state.cart.includes(products)) {
+        products.quantity++
+      } else {
+        state.cart.push(products);
+        products.quantity++
+      }
+
+
     },
     REMOVE_FROM_CART: (state, index) => {
       state.cart.splice(index, 1)
@@ -41,6 +55,8 @@ export default createStore({
         console.log(err);
         return err;
       }
+
+
     },
 
     ADD_TO_CART({ commit }, product) {
