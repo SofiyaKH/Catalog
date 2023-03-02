@@ -13,6 +13,12 @@ export default createStore({
     },
     CART(state) {
       return state.cart
+    },
+    CART_QUANTITY(state) {
+      return state.cart.reduce((acc, val) => {
+        acc += val.quantity;
+        return acc
+      }, 0);
     }
   },
 
@@ -21,7 +27,15 @@ export default createStore({
       state.products = products;
     },
     SET_CART: (state, products) => {
-      state.cart.push(products)
+
+      if (state.cart.includes(products)) {
+        products.quantity++
+      } else {
+        state.cart.push(products);
+        products.quantity++
+      }
+
+
     },
     REMOVE_FROM_CART: (state, index) => {
       state.cart.splice(index, 1)
@@ -29,18 +43,20 @@ export default createStore({
   },
 
   actions: {
-    GET_PRODUCTS_FROM_API({ commit }) {
-      return axios('http://localhost:3000/products', {
-        method: 'GET'
-      })
-        .then((products) => {
-          commit('SET_PRODUCTS_TO_STATE', products.data);
-          return products
-        })
-        .catch((error) => {
-          console.log(error);
-          return error;
-        })
+    async GET_PRODUCTS_FROM_API({ commit }) {
+      try {
+        const products = await axios('http://localhost:3000/products', {
+          method: 'GET'
+        });
+        commit('SET_PRODUCTS_TO_STATE', products.data);
+        return products;
+      }
+      catch (err) {
+        console.log(err);
+        return err;
+      }
+
+
     },
 
     ADD_TO_CART({ commit }, product) {

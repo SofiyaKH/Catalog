@@ -33,7 +33,6 @@ export default {
   },
   data() {
     return {
-      title: "Our Shop",
     };
   },
   computed: {},

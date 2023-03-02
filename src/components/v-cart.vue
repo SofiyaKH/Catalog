@@ -3,7 +3,7 @@
     <router-link :to="{ name: 'catalog' }">
       <div class="v-cart__link_to_catalog">
         <i class="medium material-icons">shopping_cart</i>
-        {{ CART.length }}
+        {{ CART_QUANTITY }}
       </div>
       <button class="btn">Back</button>
     </router-link>
@@ -40,7 +40,7 @@ export default {
     return {};
   },
   computed: {
-    ...mapGetters(["CART"]),
+    ...mapGetters(["CART", "CART_QUANTITY"]),
   },
   methods: {
     ...mapActions(["DELETE_FROM_CART"]),
